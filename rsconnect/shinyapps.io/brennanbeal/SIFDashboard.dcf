@@ -1,0 +1,12 @@
+name: SIFDashboard
+title: SIFDashboard
+username:
+account: brennanbeal
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3386379
+bundleId: 3973206
+url: https://brennanbeal.shinyapps.io/SIFDashboard/
+when: 1607646031.52487
+asMultiple: FALSE
+asStatic: FALSE

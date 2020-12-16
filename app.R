@@ -1,4 +1,4 @@
-source("Components/homePage.R")
+source("components/homePage.R")
 
 library(shiny)
 library(shinydashboard)
@@ -6,7 +6,6 @@ library(shinydashboardPlus)
 library(shinyWidgets)
 library(shinyBS)
 library(highcharter)
-library(plotly)
 library(tidyverse)
 
 shinyApp(
@@ -23,7 +22,7 @@ shinyApp(
         sidebar = dashboardSidebar(
             sidebarMenu(
                 menuItem(tabName = "mod", "Model"),
-                menuItem(tabName = "intro", "Introduction")
+                menuItem(tabName = "intro", "About Us")
 
             )
         ),
@@ -36,7 +35,7 @@ shinyApp(
                 tabItem("mod",
                         fluidRow(
                             column(width = 12,
-                                   boxPlus(
+                                   shinydashboardPlus::boxPlus(
                                        width = 12,
                                        closable = TRUE,
                                        collapsible = FALSE,
@@ -47,7 +46,7 @@ shinyApp(
                             column(width = 4, 
                                    # ----  City Characteristics ---- #
                                    
-                                   boxPlus(
+                                   shinydashboardPlus::boxPlus(
                                        title = "City Characteristics", 
                                        closable = TRUE, 
                                        width = 12,
@@ -98,7 +97,7 @@ shinyApp(
                                    
                                    # ----  Primary Outcomes ---- #
                                    
-                                   boxPlus(
+                                   shinydashboardPlus::boxPlus(
                                        width = 12,
                                        title = "Primary outcomes", 
                                        closable = TRUE,
@@ -221,7 +220,7 @@ shinyApp(
                                    
                                    
                                    # ---- Costs  ---- #
-                                   boxPlus(
+                                   shinydashboardPlus::boxPlus(
                                        title = "Costs", 
                                        closable = TRUE, 
                                        width = 12,
@@ -301,7 +300,7 @@ shinyApp(
                                    
                                    # ----  Scenario Analysis ---- #
                                    
-                                   boxPlus(
+                                   shinydashboardPlus::boxPlus(
                                        title = "Scenario Analysis Parameters", 
                                        closable = TRUE, 
                                        width = 12,
@@ -459,7 +458,7 @@ shinyApp(
                                    
                             ), # End column width = 4
                         column(width = 8,
-                               boxPlus(
+                               shinydashboardPlus::boxPlus(
                                    width = 12,
                                    title = "Costs",
                                    solidHeader = TRUE,
@@ -475,7 +474,7 @@ shinyApp(
                                            color = "success"
                                                    )
                                                ),
-                               boxPlus(
+                              shinydashboardPlus::boxPlus(
                                    width = 12,
                                    title = "Resource Utilization",
                                    solidHeader = TRUE,
@@ -499,18 +498,60 @@ shinyApp(
                 # --------------------------------------------------------------------------------------------- #
                 
                 tabItem("intro",
-                        fluidRow(
-                            column(width = 8, offset = 2,
-                                   gradientBox(
-                                       width = 12,
-                                       title = "Overview", 
-                                       closable = TRUE,
-                                       gradientColor = "purple", 
-                                       collapsible = TRUE,
-                                       homePageUI
-                                   )
+                         widgetUserBox(
+                            title = "Ryan Hansen",
+                            subtitle = HTML("Assistant Professor, <br>Comparative Health Outcomes, Policy, and Economics (CHOICE) Institute, <br> Model Lead"),
+                            type = 2,
+                            width = 12,
+                            src = "Hansen.png",
+                            collapsed = TRUE,
+                            closable = TRUE,
+                            HTML("Dr. Hansen is research assistant professor of pharmacy. His primary research interests focus on the comparative safety of prescription medications, health technology assessment, and health care system efficiency. He received his Bachelor of Arts from Carroll College, and his Doctor of Pharmacy and Doctor of Philosophy from the University of Washington.<br><br>
+                            Hansen is a fellow in the American College of Apothecaries, and a member of the International Society for Pharmacoeconomics and Outcomes Research and the Washington State Pharmacy Association. He was also an Agency for Healthcare Research and Quality/UW K12 Patient Centered Outcomes Research Scholar, an ARCS Foundation Scholar, and was selected as a Distinguished Alumnus of the UW School of Pharmacy. 
+                                          Hansen has served as a journal referee for “JAMA Internal Medicine,” “Pediatrics,” “Value in Health,” and “The Journal of Pain.” He is also an active pharmacy practitioner in a community practice setting. In this role, he applies his research skills in order to improve the practice of pharmacy."),
+                            
+                            footer = shinydashboardPlus::socialButton(
+                                url = "https://www.linkedin.com/in/pharmacyryanhansen/",
+                                type = "linkedin"
                             )
-                        )   
+                        ),
+                        widgetUserBox(
+                            title = "Greg Guzauskas",
+                            subtitle =  HTML("Research Scientist, <br>Comparative Health Outcomes, Policy, and Economics (CHOICE) Institute, <br> Model Lead"),
+                            type = 2,
+                            width = 12,
+                            src = "Guzauskas.png",
+                            color = "gray",
+                            collapsed = TRUE,
+                            closable = TRUE,
+                            HTML("Dr. Guzauskas is a health economist at the Comparative Health Outcomes, Policy, and Economics (CHOICE) Institute at the University of Washington in Seattle and also the senior health economist leading the U.S. operations branch for HCD Economics. He has been a lead and/or co-author on multiple health economic models and related publications, 
+                                 including reports by the Institute for Clinical and Economic Review (ICER) on topics such as NSCLC, osteoporosis, hemophilia A, prostate cancer, peanut allergy, and NASH. Guzauskas is an accomplished decision modeler with proficiency in budget impact analyses, cost-effectiveness analyses including Markov, partitioned survival, and microsimulation models, and advanced value of information (VOI) modeling."),
+                            footer = 
+                            shinydashboardPlus::socialButton(
+                                url = "https://www.linkedin.com/in/greg-guzauskas-msph-phd/",
+                                type = "linkedin"
+                            )
+                        ),
+                        widgetUserBox(
+                            title = "Brennan Beal",
+                            subtitle = HTML("Post-doctoral Fellow, <br>Comparative Health Outcomes, Policy, and Economics (CHOICE) Institute, <br> Dashboard Designer"),
+                            type = 2,
+                            width = 12,
+                            src = "Beal.png",
+                            color = "purple",
+                            collapsed = TRUE,
+                            closable = TRUE,
+                            HTML("Brennan is a second-year postdoctoral fellow at the Comparative Health Outcomes, Policy, and Economics (CHOICE) Institute. 
+                                 He specializes in cost-effectiveness modeling, healthcare resource utilization, and all things R!"),
+                            footer = list(shinydashboardPlus::socialButton(
+                                url = "https://github.com/btbeal",
+                                type = "github"
+                            ),
+                            shinydashboardPlus::socialButton(
+                                url = "https://www.linkedin.com/in/btbeal/",
+                                type = "linkedin"
+                            ))
+                        )
                 )
             ) # Close tabItems
         ) #close dashboard body
@@ -748,7 +789,7 @@ shinyApp(
               #----------- ICER Output BOX ---------- # (not there are no real effectiveness denominators here)
              output$icer_val <- renderUI({
 
-                 box(
+                shinydashboard::box(
                      solidHeader = FALSE,
                      title = "Summary",
                      background = NULL,

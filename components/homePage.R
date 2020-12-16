@@ -26,15 +26,15 @@ homePageUI <-
         Community overdose mortality (C) will be estimated based on the proportion of injections in the SIF.")),
       column(3,
              div(img(src = "ICER.png"), style="text-align: center;"),
-             box(
+            shinydashboard::box(
                width = 12,
                title = "Social Buttons",
                status = NULL,
-               socialButton(
+              shinydashboardPlus::socialButton(
                  url = "https://github.com/btbeal",
                  type = "github"
                ),
-               socialButton(
+              shinydashboardPlus::socialButton(
                  url = "https://twitter.com/icer_review",
                  type = "twitter"
                )
